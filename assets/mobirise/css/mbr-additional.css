@@ -1765,14 +1765,14 @@ body {
 }
 .cid-qKi5q8pdHq {
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 45px;
   background-color: #ffffff;
 }
 .cid-qKi5q8pdHq .mbr-section-subtitle {
   color: #767676;
 }
 .cid-qKi5LRE6l8 {
-  padding-top: 90px;
+  padding-top: 45px;
   padding-bottom: 90px;
   background-color: #f9f9f9;
 }
@@ -3340,26 +3340,6 @@ body {
 .cid-qKi0pmUaM4 .nav-link:hover,
 .cid-qKi0pmUaM4 .dropdown-item:hover {
   color: #c1c1c1 !important;
-}
-.cid-qKioVTCAX9 {
-  background: #ffffff;
-}
-.cid-qKioVTCAX9 .image-block {
-  margin: auto;
-  width: 100% !important;
-}
-.cid-qKioVTCAX9 figcaption {
-  position: relative;
-}
-.cid-qKioVTCAX9 figcaption div {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-@media (max-width: 768px) {
-  .cid-qKioVTCAX9 .image-block {
-    width: 100% !important;
-  }
 }
 .cid-qKinG4vswB {
   padding-top: 45px;
