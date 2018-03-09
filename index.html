@@ -41,7 +41,16 @@
   
 </head>
 <body>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=139306606638724&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+ 
+ 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114691592-1"></script>
 <script>
@@ -189,7 +198,10 @@
         </div>
 
     </div>
-
+ <div>
+ <div class="fb-like" data-href="https://developers.facebook.com/jsewears" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+ 
+ </div>
 </section>
 
 <section class="cid-qKi0psIXyV" id="footer1-g">
