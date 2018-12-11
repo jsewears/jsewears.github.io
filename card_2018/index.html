@@ -1,0 +1,263 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+
+<style type="text/css">
+.setcont{ display: none;}
+.b1{ display: none;}
+
+.parallax { 
+  /* The image used */
+  background: url("chr.svg") no-repeat;
+
+  /* Set a specific height */
+  
+
+  
+}
+
+
+</style>
+<script
+  src="jquery.min.js"></script>
+
+
+
+
+</head>
+<body>
+
+
+<div id='setcont1' class='setcont'>
+<center style='padding-top:200px;'>
+<div style='' id='yourElement'>
+	<a href="#" onclick='openCard()'>
+<img src="mail.png" style='width:40%; cursor:pointer;'>
+</a>
+</div>
+</center>
+
+
+</div>
+
+
+<div id='setcont2' class='setcont'>
+
+
+
+
+<div style='width:100%; position:absolute; z-index:2; top:0; left:0; background:#00C851; height:70px;'></div>
+
+<div class='container parallax' style='margin-top:101px; padding-top:10%; '>
+
+
+<div  id='content'></div>
+
+
+<div class='row' style='margin-bottom:20%;'>
+</div>
+
+
+
+
+
+
+
+
+
+<div class='b1' style='position:fixed; width:100%; bottom:0; background:#fff; padding:2%;'>
+	<center>
+ <div style='' class="audiocontrols">
+          <audio id="song" src="https://peter.christmas/2010/media/Jingle_Bells_Jazzy.mp3" autobuffer="autobuffer" loop="loop"></audio>
+          <a href="#" class='btn btn-primary ' id="pause">||</a>
+          <a href="#" class='btn btn-primary ' id="play" class="disabled">&gt;</a>
+          <div class="label">Music controls</div>
+        </div>
+</center>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+</body>
+<script type="text/javascript" src='animate.js'></script>
+<!-- Latest compiled JavaScript -->
+<script src="bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+setcont(1);
+
+$('#yourElement').animateCss('bounce');
+
+});
+
+
+function setcont(n){
+	$('.setcont').hide();
+	$('#setcont'+n).show();
+}
+
+
+
+
+function getData1(){
+
+    $.ajax({
+        url:"message.json",
+        type:"GET",
+        success:function(data){
+            var n=data.messages;
+            console.log(n);
+            var str="";
+for(var x=0;x<n.length;x++){
+if( ((x+1)%2)!=0 ){
+
+str+=`
+
+<div class='row' style='margin-bottom:2%;'>
+<div class='col-sm-12'>
+
+<div style='padding:4%; font-size:12px; width:80%; border-radius:30px; background:#cfd8dc; ' class='animated bounceIn delay-`+(x+1)+`s'>
+<div>
+`+n[x].message+`
+</div>
+    <div style='width:100%;' align='right'>`+n[x].from+`</div>
+
+</div>
+
+</div>
+</div>
+
+
+`;
+
+
+}
+else{
+
+str+=`
+<div class='row' style='margin-bottom:2%;'>
+<div class='col-sm-12' align='right'>
+
+<div style='padding:4%; width:80%; font-size:12px; border-radius:30px; background:#33b5e5; ' class='animated bounceIn  delay-`+(x+1)+`s'>
+<div align='left'>
+`+n[x].message+`
+</div>
+    <div style='width:100%;' align='right'>`+n[x].from+`</div>
+
+</div>
+
+</div>
+</div>
+
+`;
+
+
+}
+
+
+
+}
+
+$('#content').html(str);
+
+
+        },
+        error:function(err){
+            console.log(err);
+        }
+    });
+}
+
+
+
+function openCard(){
+$('#yourElement').animateCss('zoomOut');
+	setTimeout(function(){
+setcont(2);
+$('.b1').show();
+
+
+    getData1();
+ playMusic();
+},1000);
+
+
+
+
+
+}
+
+</script>
+<script type="text/javascript">
+ $('#play').click(function(event) {
+        playMusic();
+        event.preventDefault();
+    });
+    $('#play').bind('touchstart',function(event) {
+        playMusic();
+        event.preventDefault();
+    });
+
+    $('#pause').click(function(event) {
+        pauseMusic();
+        event.preventDefault();
+    });
+    $('#pause').bind('touchstart',function(event) {
+        pauseMusic();
+        event.preventDefault();
+    });
+
+    $('#frontpage').click(function(event) {
+        openCard();
+        event.preventDefault();
+    });
+    $('#frontpage').bind('touchstart',function(event) {
+	openCard();
+	event.preventDefault();
+    });
+
+    $('#firstinnerpage').click(function(event) {
+        closeCard();
+        event.preventDefault();
+    });
+    $('#firstinnerpage').bind('touchstart',function(event) {
+	closeCard();
+	event.preventDefault();
+    });
+
+    $('#song').bind('onended',function(event) {
+	alert('Song ended');
+	onMusicEnded();
+    });
+
+
+
+function playMusic() {
+    $('#song')[0].play();
+    $('#play').addClass('disabled');
+    $('#pause').removeClass('disabled');
+}
+
+function pauseMusic() {
+    $('#song')[0].pause();
+    $('#play').removeClass('disabled');
+    $('#pause').addClass('disabled');
+}
+
+function onMusicEnded() {
+    $('#play').removeClass('disabled');
+    $('#pause').addClass('disabled');
+}
+
+</script>
+</html>
